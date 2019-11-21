@@ -58,3 +58,20 @@ class CarNavigation: public CarDecorator {
             delete car_;
         }
 };
+
+class CarTSS: public CarDecorator {
+    private:
+        Car* car_;
+    public:
+        CarTSS(Car* car): car_(car) { }
+        string getCarDescription() {
+            return car_->getCarDescription() + " with TSS. ";
+        }
+        double getCost() {
+            return car_->getCost() + 20000.0;
+        }
+        ~CarTSS() {
+            cout << "CarTSS destroyed\n";
+            delete car_;
+        }
+};
